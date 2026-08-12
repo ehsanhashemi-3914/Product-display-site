@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="72%">
+      <stop offset="0" stop-color="#faf8f5"/>
+      <stop offset="1" stop-color="#eae3d8"/>
+    </radialGradient>
+    <linearGradient id="bead" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#7fbba9"/>
+      <stop offset="1" stop-color="#266557"/>
+    </linearGradient>
+    <linearGradient id="clay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6b892"/>
+      <stop offset="1" stop-color="#bd7c52"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="474" rx="196" ry="24" fill="#5c5145" opacity=".14"/>
+
+  <!-- mohr behind -->
+  <circle cx="400" cy="306" r="118" fill="#a4653f"/>
+  <circle cx="400" cy="294" r="118" fill="url(#clay)"/>
+  <circle cx="400" cy="294" r="94" fill="#d7a077"/>
+  <g fill="none" stroke="#8a4f2f" stroke-width="7" stroke-linecap="round" opacity=".55">
+    <path d="M356 276h88"/>
+    <path d="M370 312h60"/>
+  </g>
+
+  <!-- prayer beads looping in front -->
+  <path d="M250 250c-40 84-14 168 66 196 74 26 158 6 200-46 34-42 30-100-6-134"
+        fill="none" stroke="#205247" stroke-width="5" opacity=".5"/>
+  <g fill="url(#bead)">
+    <circle cx="250" cy="250" r="17"/>
+    <circle cx="238" cy="296" r="17"/>
+    <circle cx="238" cy="344" r="17"/>
+    <circle cx="252" cy="390" r="17"/>
+    <circle cx="286" cy="424" r="17"/>
+    <circle cx="332" cy="446" r="17"/>
+    <circle cx="382" cy="454" r="17"/>
+    <circle cx="432" cy="450" r="17"/>
+    <circle cx="480" cy="434" r="17"/>
+    <circle cx="518" cy="404" r="17"/>
+    <circle cx="540" cy="362" r="17"/>
+    <circle cx="540" cy="314" r="17"/>
+    <circle cx="522" cy="272" r="17"/>
+  </g>
+  <g fill="#c9871f">
+    <circle cx="510" cy="238" r="13"/>
+    <rect x="498" y="196" width="24" height="42" rx="12"/>
+  </g>
+</svg>

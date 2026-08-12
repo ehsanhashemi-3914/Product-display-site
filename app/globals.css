@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — Tailwind v4 `@theme` (no tailwind.config.js needed).
+ * Palette: deep teal-green primary + warm sand neutrals + muted gold accent.
+ * Light-only on purpose: a single, consistently-tuned theme beats a half-finished dark mode.
+ */
+@theme {
+  --font-sans: var(--font-vazir), ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+
+  /* Brand — deep teal-green */
+  --color-brand-50: #eff7f4;
+  --color-brand-100: #d7ebe4;
+  --color-brand-200: #b0d7ca;
+  --color-brand-300: #7fbba9;
+  --color-brand-400: #529b87;
+  --color-brand-500: #35806c;
+  --color-brand-600: #266557;
+  --color-brand-700: #205247;
+  --color-brand-800: #1c423a;
+  --color-brand-900: #183731;
+
+  /* Warm neutrals */
+  --color-sand-50: #faf8f5;
+  --color-sand-100: #f3efe9;
+  --color-sand-200: #e7e0d6;
+  --color-sand-300: #d5cabb;
+  --color-sand-400: #b3a693;
+  --color-sand-500: #92836e;
+  --color-sand-600: #756757;
+  --color-sand-700: #5c5145;
+  --color-sand-800: #433b32;
+  --color-sand-900: #2c2721;
+
+  /* Accent — muted gold, used sparingly for badges/discounts */
+  --color-gold-50: #fdf8ed;
+  --color-gold-100: #f9edd0;
+  --color-gold-200: #f2d99c;
+  --color-gold-300: #e9be63;
+  --color-gold-400: #e0a43a;
+  --color-gold-500: #c9871f;
+  --color-gold-600: #a4681a;
+  --color-gold-700: #834f19;
+
+  /* Semantic aliases → bg-surface, bg-canvas, border-line, text-ink, text-ink-muted */
+  --color-surface: #ffffff;
+  --color-canvas: #faf8f5;
+  --color-line: #e7e0d6;
+  --color-line-strong: #d5cabb;
+  --color-ink: #2c2721;
+  --color-ink-muted: #756757;
+  --color-ink-subtle: #92836e;
+
+  /* Two-step elevation scale */
+  --shadow-card: 0 1px 2px 0 rgb(44 39 33 / 0.04), 0 1px 3px 0 rgb(44 39 33 / 0.06);
+  --shadow-card-hover: 0 4px 14px -3px rgb(44 39 33 / 0.12), 0 2px 6px -2px rgb(44 39 33 / 0.06);
+  --shadow-overlay: 0 16px 48px -12px rgb(44 39 33 / 0.28);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss02";
+  }
+
+  ::selection {
+    background-color: var(--color-brand-200);
+    color: var(--color-brand-900);
+  }
+
+  /*
+   * Native <dialog> is used for every modal (quick-view, delete confirm) because it
+   * gives focus trapping, Escape-to-close and background inertness for free.
+   */
+  dialog::backdrop {
+    background-color: rgb(24 55 49 / 0.55);
+  }
+
+  dialog[open] {
+    animation: dialog-in 160ms ease-out;
+  }
+
+  dialog[open]::backdrop {
+    animation: backdrop-in 160ms ease-out;
+  }
+
+  @keyframes dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+  }
+
+  @keyframes backdrop-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    dialog[open],
+    dialog[open]::backdrop {
+      animation: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility focus-ring {
+  @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
+}

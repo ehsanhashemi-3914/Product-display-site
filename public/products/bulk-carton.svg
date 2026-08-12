@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="72%">
+      <stop offset="0" stop-color="#faf8f5"/>
+      <stop offset="1" stop-color="#eae3d8"/>
+    </radialGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d3b48c"/>
+      <stop offset="1" stop-color="#ab8659"/>
+    </linearGradient>
+    <linearGradient id="clay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6b892"/>
+      <stop offset="1" stop-color="#bd7c52"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="482" rx="228" ry="26" fill="#5c5145" opacity=".14"/>
+
+  <!-- stacked mohrs peeking above the carton -->
+  <g>
+    <circle cx="316" cy="228" r="74" fill="#a4653f"/>
+    <circle cx="316" cy="218" r="74" fill="url(#clay)"/>
+    <circle cx="316" cy="218" r="52" fill="#d7a077"/>
+    <circle cx="484" cy="240" r="74" fill="#a4653f"/>
+    <circle cx="484" cy="230" r="74" fill="url(#clay)"/>
+    <circle cx="484" cy="230" r="52" fill="#d7a077"/>
+    <circle cx="400" cy="200" r="82" fill="#a4653f"/>
+    <circle cx="400" cy="188" r="82" fill="url(#clay)"/>
+    <circle cx="400" cy="188" r="58" fill="#d7a077"/>
+    <g fill="none" stroke="#8a4f2f" stroke-width="7" stroke-linecap="round" opacity=".55">
+      <path d="M370 174h60"/>
+      <path d="M382 206h36"/>
+    </g>
+  </g>
+
+  <!-- carton -->
+  <path d="M200 290h400v168a20 20 0 0 1-20 20H220a20 20 0 0 1-20-20z" fill="#9a7749"/>
+  <path d="M200 276h400v168a20 20 0 0 1-20 20H220a20 20 0 0 1-20-20z" fill="url(#box)"/>
+  <path d="M200 276h400v40H200z" fill="#c0a077" opacity=".7"/>
+  <rect x="356" y="276" width="88" height="188" fill="#8e6c42" opacity=".3"/>
+  <path d="M200 276h400v168a20 20 0 0 1-20 20H220a20 20 0 0 1-20-20z" fill="none" stroke="#7d6039" stroke-width="3" opacity=".45"/>
+</svg>

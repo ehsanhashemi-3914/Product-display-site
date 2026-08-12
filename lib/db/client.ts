@@ -25,9 +25,25 @@ export class DatabaseNotConfiguredError extends Error {
   }
 }
 
-/** Vercel's Postgres integrations set POSTGRES_URL; other hosts use DATABASE_URL. */
+/**
+ * Finds the Postgres connection string.
+ *
+ * Hosts disagree on the name: DATABASE_URL is the convention, Vercel's integrations set
+ * POSTGRES_URL, and its storage marketplace lets you pick any prefix (STORAGE_URL and so
+ * on). Rather than making a deployment fail over a naming choice made in a dashboard,
+ * fall back to any variable that actually holds a Postgres URL.
+ */
 export function getConnectionString(): string | undefined {
-  return process.env.DATABASE_URL ?? process.env.POSTGRES_URL;
+  const preferred = process.env.DATABASE_URL ?? process.env.POSTGRES_URL;
+  if (preferred) return preferred;
+
+  for (const [name, value] of Object.entries(process.env)) {
+    if (!value || !name.endsWith("_URL")) continue;
+    // Skip the non-pooled variants some providers add alongside the main one.
+    if (/PRISMA|UNPOOLED|NON_?POOLING/i.test(name)) continue;
+    if (/^postgres(ql)?:\/\//i.test(value)) return value;
+  }
+  return undefined;
 }
 
 function createPool(): Pool {

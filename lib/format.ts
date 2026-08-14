@@ -103,7 +103,7 @@ export function formatDate(iso: string): string {
   return `${toPersianDigits(jd)} ${PERSIAN_MONTHS[jm - 1]} ${toPersianDigits(jy)}`;
 }
 
-/** "09159123914" → "۰۹۱۵-۹۱۲-۳۹۱۴". Non-11-digit input is returned digit-shaped only. */
+/** "09930813843" → "۰۹۹۳-۰۸۱-۳۸۴۳". Non-11-digit input is returned digit-shaped only. */
 export function formatPhone(raw: string): string {
   const digits = toEnglishDigits(raw).replace(/\D/g, "");
   if (digits.length !== 11) return toPersianDigits(digits || raw);

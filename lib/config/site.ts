@@ -17,7 +17,7 @@ export const SITE = {
   producer: "تولیدی سید جواد هاشمی",
   tagline: "تولید و عرضهٔ مستقیم مهر نماز",
   description:
-    "مهر نماز احسان، تولیدی سید جواد هاشمی، با بیش از ۲۰ سال سابقه در تولید مهر نماز و فروش بیش از یک میلیارد مهر. ارسال به سراسر کشور و کشورهای همسایه.",
+    "مهر نماز احسان، تولیدی سید جواد هاشمی، با بیش از ۲۰ سال سابقه در تولید مهر نماز و فروش بیش از ۴۰۰ میلیون مهر. ارسال به سراسر کشور و کشورهای همسایه.",
   keywords: [
     "مهر نماز",
     "مهر تربت کربلا",
@@ -40,24 +40,24 @@ export const SITE = {
 
   trust: [
     { icon: "award", label: "سابقهٔ تولید", value: "بیش از ۲۰ سال" },
-    { icon: "package", label: "فروش تجمعی", value: "بیش از ۱ میلیارد مهر نماز" },
+    { icon: "package", label: "فروش تجمعی", value: "بیش از ۴۰۰ میلیون مهر نماز" },
     { icon: "truck", label: "ارسال", value: "سراسر کشور و کشورهای همسایه" },
   ] satisfies readonly TrustItem[],
 
   contact: {
     /** Local format, digits only. The first one is treated as the primary line. */
-    phones: ["09159123914", "09930813843"],
+    phones: ["09930813843"],
     /**
      * wa.me resolves phone numbers, not @usernames, so the WhatsApp button is built
-     * from this number. Change it here if WhatsApp is on the other line.
+     * from this number.
      */
-    whatsappPhone: "09159123914",
+    whatsappPhone: "09930813843",
     telegram: "mohreehsan",
     instagram: "mohre_namaz_ehsan",
   },
 } as const;
 
-/** 09159123914 → +989159123914 (E.164, what tel: and wa.me expect). */
+/** 09930813843 → +989930813843 (E.164, what tel: and wa.me expect). */
 function toInternational(localPhone: string): string {
   return `98${localPhone.replace(/\D/g, "").replace(/^0/, "")}`;
 }

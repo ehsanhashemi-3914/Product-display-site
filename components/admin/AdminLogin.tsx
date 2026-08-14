@@ -31,7 +31,9 @@ export function AdminLogin() {
       const result = await unlockAdmin(password, remember);
       if (!result.ok) {
         setError(result.error);
-        setPassword("");
+        // Only wipe the field when the password was actually rejected — retyping it
+        // helps nobody when the real problem is a server misconfiguration.
+        if (result.wrongPassword) setPassword("");
         return;
       }
       // On success the session store flips to "unlocked" and the gate swaps in the panel.

@@ -31,7 +31,7 @@ export function subscribeToAdminSession(listener: () => void): () => void {
 export async function unlockAdmin(
   password: string,
   remember: boolean,
-): Promise<{ ok: true } | { ok: false; error: string }> {
+): Promise<{ ok: true } | { ok: false; error: string; wrongPassword: boolean }> {
   const response = await fetch("/api/auth/login", {
     method: "POST",
     credentials: "same-origin",
@@ -46,7 +46,9 @@ export async function unlockAdmin(
     } catch {
       // Keep the generic message when the body isn't JSON.
     }
-    return { ok: false, error };
+    // 401 means the password itself was rejected. Anything else (a missing environment
+    // variable, a database outage) is not the typist's fault, so their input is kept.
+    return { ok: false, error, wrongPassword: response.status === 401 };
   }
 
   setStatus("unlocked");
